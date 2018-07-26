@@ -1,4 +1,6 @@
-# Gigantier JavaScript SDK
+# Gigantier JavaScript 
+
+[![npm version](https://img.shields.io/npm/v/@gigantier/js-sdk.svg)](https://www.npmjs.com/package/@gigantier/js-sdk)
 
 > SDK to connect you Javascript app to Giganter API.
 
