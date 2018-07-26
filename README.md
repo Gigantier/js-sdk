@@ -6,10 +6,10 @@
 
 ## Installation
 
-Install the package from [npm](https://www.npmjs.com/package/@gigantier/sdk) and import in your project.
+Install the package from [npm](https://www.npmjs.com/package/@gigantier/js-sdk) and import in your project.
 
 ```bash
-npm install --save @gigantier/sdk
+npm install --save @gigantier/js-sdk
 ```
 
 ## Usage
@@ -20,7 +20,7 @@ To get started, instantiate a new Gigantier client with your credentials.
 
 ```js
 // JavaScript
-import { gigantier } from '@gigantier/sdk';
+import { gigantier } from '@gigantier/js-sdk';
 
 const apiClient = gigantier.client({
   client_id: 'XXX',
@@ -29,7 +29,7 @@ const apiClient = gigantier.client({
 });
 
 // Node.js
-const gigantier = require('@gigantier/sdk');
+const gigantier = require('@gigantier/js-sdk');
 
 const apiClient = gigantier.client({
   client_id: 'XXX',
@@ -41,7 +41,7 @@ const apiClient = gigantier.client({
 Alternatively you can include the `UMD` bundle via [UNPKG](https://unpkg.com) like so:
 
 ```js
-<script src="https://unpkg.com/@gigantier/sdk"></script>
+<script src="https://unpkg.com/@gigantier/js-sdk"></script>
 
 <script>
   const apiClient = gigantier.client({
