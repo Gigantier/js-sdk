@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Gigantier Example</title>
+    <style>
+      .field {
+         margin: 10px 0px;
+      }
+
+      input[type=text] {
+        width: 100%;
+        max-width: 400px;
+      }
+
+      label {
+        display: block;
+      }
+    </style>
+  </head>
+
+  <body>
+    <form action="" name="apiConfigForm" onsubmit="javascript:listCategories(); return false;">
+      <div class="field">
+        <label for="clientId">Client ID*</label>
+        <input type="text" name="clientId" value="" required>
+      </div>
+      <div class="field">
+        <label for="clientSecret">Client Secret*</label>
+        <input type="text" name="clientSecret" value="" required>
+      </div>
+      <div class="field">
+        <label for="host">Protocol</label>
+        <select name="protocol" value="">
+          <option value="https">https</option>
+          <option value="http">http</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="host">Host (optional)</label>
+        <input type="text" name="host" value="">
+      </div>
+      <div class="field">
+        <label for="scope">Scope*</label>
+        <input type="text" name="scope" value="" required>
+      </div>
+      <button type="submit" name="submitBtn">List Categories</button>
+    </form>
+    <hr />
+    <div id="categories"></div>
+    <script src="../dist/gigantier.umd.js"></script>
+    <script charset="utf-8">
+
+      const categoriesHtml = document.querySelector("#categories");
+
+      const printCategory = (category) => {   
+        categoriesHtml.innerHTML = categoriesHtml.innerHTML + `<div class="category">${category.name}</div>`;
+      }
+
+      const printCategories = (res) => {
+        categoriesHtml.innerHTML = "";
+        res.categories.forEach(printCategory);
+      }
+
+      const listCategories = () => {
+        const config = {
+          clientId: document.querySelector('[name="clientId"]').value,
+          clientSecret: document.querySelector('[name="clientSecret"]').value,
+          scope: document.querySelector('[name="scope"]').value,
+          protocol: document.querySelector('[name="protocol"]').value
+        };
+
+        const host = document.querySelector('[name="host"]').value;
+        if (host != null && host != "") config.host = host;
+        
+        const apiClient = gigantier.client(config);
+        apiClient.post('/Category/list').then(printCategories).catch(console.error);
+
+        return false;
+      }
+
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,54 @@
+{
+  "name": "@gigantier/js-sdk",
+  "version": "1.0.0",
+  "description": "SDK for Gigantier API",
+  "homepage": "https://github.com/gigantier/js-sdk",
+  "author": "Gigantier (https://gigantier.com/)",
+  "scripts": {
+    "precommit": "lint-staged",
+    "rollup": "rollup -c",
+    "start": "DEBUG=* NODE_ENV=development SERVE=true rollup -c -w",
+    "lint": "eslint src",
+    "test": "mocha --compilers js:babel-core/register test/tests.js",
+    "test-output": "mocha --compilers js:babel-core/register --reporter mocha-junit-reporter test/tests.js"
+  },
+  "main": "dist/gigantier.cjs.js",
+  "module": "src/gigantier.js",
+  "cjs:main": "dist/gigantier.cjs.js",
+  "browser": "dist/gigantier.umd.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/gigantier/js-sdk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gigantier/js-sdk/issues"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "debug": "^3.1.0",
+    "es6-promise": "^4.2.4",
+    "fetch-everywhere": "^1.0.5",
+    "node-localstorage": "^1.3.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-env": "^1.7.0",
+    "chai": "^4.1.2",
+    "eslint": "^4.19.1",
+    "eslint-config-google": "^0.9.1",
+    "eslint-plugin-import": "^2.12.0",
+    "lint-staged": "^7.1.3",
+    "mocha": "^5.2.0",
+    "mocha-junit-reporter": "^1.17.0",
+    "nock": "^9.3.2",
+    "rollup": "0.62.0",
+    "rollup-plugin-babel": "^3.0.4",
+    "rollup-plugin-buble": "^0.19.2",
+    "rollup-plugin-commonjs": "^9.1.3",
+    "rollup-plugin-filesize": "^2.0.0",
+    "rollup-plugin-json": "^3.0.0",
+    "rollup-plugin-node-resolve": "^3.3.0",
+    "rollup-plugin-uglify": "^4.0.0"
+  }
+}
