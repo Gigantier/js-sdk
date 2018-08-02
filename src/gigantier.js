@@ -9,8 +9,8 @@ const gigantier = (options) => {
   const client = clientFactory(config);
 
   return {
-    post: client.post,
-    authenticatedPost: client.authenticatedPost,
+    call: client.post,
+    authenticatedCall: client.authenticatedPost,
     authenticate: client.authenticate
   };
 };

@@ -98,10 +98,10 @@
 
         if (execAuthenticate)
           apiClient.authenticate(email, password).then(res => {
-            apiClient.authenticatedPost('/User/me').then(printUserData);
+            apiClient.authenticatedCall('/User/me').then(printUserData);
           }).catch(console.error);
         else 
-          apiClient.authenticatedPost('/User/me').then(printUserData);
+          apiClient.authenticatedCall('/User/me').then(printUserData);
 
         return false;
       }

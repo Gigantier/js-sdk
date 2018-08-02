@@ -30,7 +30,7 @@ const client = (config) => {
       'Content-Type': 'application/x-www-form-urlencoded',
       'X-GIGANTIER-SDK-LANGUAGE': config.sdk.language,
       'X-GIGANTIER-SDK-VERSION': config.sdk.version
-    }
+    };
 
     if (config.application) {
       headers['X-GIGANTIER-APPLICATION'] = config.application;

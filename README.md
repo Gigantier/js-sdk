@@ -64,7 +64,7 @@ If you have a different host than default, you'll need to specify your API URL w
 const apiClient = gigantier({
   client_id: 'XXX',
   clientSecret: 'XXX',
-  scope: 'XXX'
+  scope: 'XXX',
   host: 'api.yourdomain.com'
 })
 ```

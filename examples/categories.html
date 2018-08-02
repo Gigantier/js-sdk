@@ -77,7 +77,7 @@
         if (host != null && host != "") config.host = host;
         
         const apiClient = gigantier.client(config);
-        apiClient.post('/Category/list').then(printCategories).catch(console.error);
+        apiClient.call('/Category/list').then(printCategories).catch(console.error);
 
         return false;
       }
