@@ -26,8 +26,7 @@ const client = (config) => {
   };
 
   const buildHeaders = () => {
-    /*
-    const headers = {
+    let headers = {
       'Content-Type': 'application/x-www-form-urlencoded',
       'X-GIGANTIER-SDK-LANGUAGE': config.sdk.language,
       'X-GIGANTIER-SDK-VERSION': config.sdk.version
@@ -36,10 +35,6 @@ const client = (config) => {
     if (config.application) {
       headers['X-GIGANTIER-APPLICATION'] = config.application;
     }
-    */
-   const headers = {
-     'Content-Type': 'application/x-www-form-urlencoded'
-   };
 
     return headers;
   };
