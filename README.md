@@ -25,7 +25,7 @@ To get started, instantiate a new Gigantier client with your credentials.
 import gigantier from '@gigantier/js-sdk';
 
 const client = gigantier({
-  client_id: 'XXX',
+  clientId: 'XXX',
   clientSecret: 'XXX',
   scope: 'XXX'
 });
@@ -34,7 +34,7 @@ const client = gigantier({
 const gigantier = require('@gigantier/js-sdk');
 
 const apiClient = gigantier.client({
-  client_id: 'XXX',
+  clientId: 'XXX',
   clientSecret: 'XXX',
   scope: 'XXX'
 });
@@ -47,7 +47,7 @@ Alternatively you can include the `UMD` bundle via [UNPKG](https://unpkg.com) li
 
 <script>
   const apiClient = gigantier.client({
-    client_id: 'XXX',
+    clientId: 'XXX',
     clientSecret: 'XXX',
     scope: 'XXX'
   });
