@@ -21,16 +21,16 @@ To get started, instantiate a new Gigantier client with your credentials.
 > **Note:** This requires a [Gigantier](http://gigantier.com) account.
 
 ```js
-// JavaScript
-import { gigantier } from '@gigantier/js-sdk';
+// ESM
+import gigantier from '@gigantier/js-sdk';
 
-const apiClient = gigantier.client({
+const client = gigantier({
   client_id: 'XXX',
   clientSecret: 'XXX',
   scope: 'XXX'
 });
 
-// Node.js
+// CJS
 const gigantier = require('@gigantier/js-sdk');
 
 const apiClient = gigantier.client({
