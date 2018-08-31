@@ -41,6 +41,15 @@ const config = {
       globals: {
         inflected: 'inflected'
       }
+    },
+    {
+      file: 'dist/gigantier.js',
+      exports: 'named',
+      format: 'es',
+      name: 'gigantier',
+      globals: {
+        inflected: 'inflected'
+      }
     }
   ],
   moduleContext: {
