@@ -132,7 +132,7 @@ const client = (config) => {
     debug(`Authenticated Post request to ${uri} with body ${body}`);
 
       return new Promise((resolve, reject) => {
-        if(body.access_token) {
+        if (body.access_token) {
           execMethod(body.access_token, 'POST', uri, body, true, resolve, reject);
         } else {
           getUserToken().then((token) => {
