@@ -90,3 +90,17 @@ npm run rollup
 ```
 
 You can learn more about the Rollup API and configuration [here](https://github.com/rollup/rollup/wiki).
+
+## Release
+
+To release a new version, first update version number at `package.json`, then execute:
+
+```bash
+npm install
+npm run lint
+npm test
+npm run rollup
+npm publish
+```
+
+You need to run `npm login` before `npm publish` if you never did it before.
