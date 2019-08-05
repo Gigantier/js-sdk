@@ -131,11 +131,15 @@ const client = (config) => {
   const authenticatedPostFunc = (uri, body = {}) => {
     debug(`Authenticated Post request to ${uri} with body ${body}`);
 
-    return new Promise((resolve, reject) => {
-      getUserToken().then((token) => {
-        execMethod(token, 'POST', uri, body, true, resolve, reject);
-      }).catch(reject);
-    });
+      return new Promise((resolve, reject) => {
+        if(body.access_token) {
+          execMethod(body.access_token, 'POST', uri, body, true, resolve, reject);
+        } else {
+          getUserToken().then((token) => {
+            execMethod(token, 'POST', uri, body, true, resolve, reject);
+          }).catch(reject);
+        }
+      });
   };
 
   const tokenFunc = (key, grantType, additionalParams = {}) => {
