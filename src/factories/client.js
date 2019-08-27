@@ -118,25 +118,25 @@ const client = (config) => {
     fetch(fetchUrl, fetchData).then(parseJSON).then(onResult).catch(reject);
   };
 
-  const postFunc = (uri, body = {}) => {
-    debug(`Post request to ${uri} with body ${body}`);
+  const callFunc = (uri, { method = 'POST', body = {} } = {}) => {
+    debug(`${method} request to ${uri} with body ${body}`);
 
     return new Promise((resolve, reject) => {
       getAppToken().then((token) => {
-        execMethod(token, 'POST', uri, body, false, resolve, reject);
+        execMethod(token, method, uri, body, false, resolve, reject);
       }).catch(reject);
     });
   };
 
-  const authenticatedPostFunc = (uri, body = {}) => {
-    debug(`Authenticated Post request to ${uri} with body ${body}`);
+  const authenticatedCallFunc = (uri, { method = 'POST', body = {} } = {}) => {
+    debug(`Authenticated ${method} request to ${uri} with body ${body}`);
 
       return new Promise((resolve, reject) => {
         if (body.access_token) {
-          execMethod(body.access_token, 'POST', uri, body, true, resolve, reject);
+          execMethod(body.access_token, method, uri, body, true, resolve, reject);
         } else {
           getUserToken().then((token) => {
-            execMethod(token, 'POST', uri, body, true, resolve, reject);
+            execMethod(token, method, uri, body, true, resolve, reject);
           }).catch(reject);
         }
       });
@@ -185,8 +185,8 @@ const client = (config) => {
   // Public
 
   return {
-    post: postFunc,
-    authenticatedPost: authenticatedPostFunc,
+    call: callFunc,
+    authenticatedCall: authenticatedCallFunc,
     authenticate: authenticateFunc
   };
 };
