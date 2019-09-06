@@ -18,11 +18,11 @@ const client = (config) => {
   const userCredentialsKey = 'userCredentials';
 
   const parseJSON = (response) => {
-    try {
-      return response.json().then((json) => ({ status: response.status, ok: response.ok, json }));
-    } catch (e) {
-      return response.text().then((txt) => ({ ok: false, response: txt, error: e.message }));
-    }
+    return response.json().then(
+      (json) => ({ status: response.status, ok: response.ok, json })
+    ).catch(
+      (data) => response.text().then((txt) => ({ ok: false, response: txt, error: e.message }))
+    );
   };
 
   const buildHeaders = () => {
