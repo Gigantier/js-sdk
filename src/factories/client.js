@@ -18,14 +18,11 @@ const client = (config) => {
   const userCredentialsKey = 'userCredentials';
 
   const parseJSON = (response) => {
-    return response.text().then((text) => {
-      try {
-        let json = JSON.parse(text);
-        return ({ status: response.status, ok: response.ok, json });
-      } catch (e) {
-        return ({ status: 500, ok: false, response: text, error: e.message });
-      }
-    });
+    return response.json()
+      .then((json) => ({ status: response.status, ok: response.ok, json }))
+      .catch((err) => {
+        throw new Error(`Cannot parse api response: ${err.message}`, err);
+      });
   };
 
   const buildHeaders = () => {
