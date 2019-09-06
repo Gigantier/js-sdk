@@ -23,7 +23,7 @@ const client = (config) => {
         let json = JSON.parse(text);
         return ({ status: response.status, ok: response.ok, json });
       } catch (e) {
-        return { ok: false, response: text, error: e.message };
+        return ({ status: 500, ok: false, response: text, error: e.message });
       }
     });
   };
