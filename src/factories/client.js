@@ -21,7 +21,7 @@ const client = (config) => {
     try {
       return response.json().then((json) => ({ status: response.status, ok: response.ok, json }));
     } catch (e) {
-      throw new Error('Cannot parse api response', e);
+      return response.text().then((txt) => ({ ok: false, response: txt, error: e.message }));
     }
   };
 
