@@ -71,7 +71,14 @@ const client = (config) => {
   };
 
   const getAppToken = (renew = false) => {
-    const appCredentials = JSON.parse(storage.get(appCredentialsKey));
+    let appCredentials;
+
+    try {
+      appCredentials = JSON.parse(storage.get(appCredentialsKey));
+    } catch (error) {
+      console.warn('Invalid credentials stored.', error);
+      storage.delete(appCredentialsKey);
+    }
 
     if (renew || renewAppCredentials(appCredentials)) {
       return tokenFunc(appCredentialsKey, 'client_credentials').then((result) => result.accessToken);
@@ -81,7 +88,14 @@ const client = (config) => {
   };
 
   const getUserToken = (renew = false) => {
-    const userCredentials = JSON.parse(storage.get(userCredentialsKey));
+    let userCredentials;
+
+    try {
+      userCredentials = JSON.parse(storage.get(userCredentialsKey));
+    } catch (error) {
+      console.warn('Invalid credentials stored.', error);
+      storage.delete(userCredentialsKey);
+    }
 
     if (!userCredentials) throw new Error('Invalid user credentials. Need to call authenticate() first.');
     else if (renew || renewUserCredentials(userCredentials)) {
